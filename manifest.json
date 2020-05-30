@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Passo",
+  "description": "Password Regenerator",
+  "version": "0.0.1",
+  "icons": {
+    "16": "addon/icons/Passo-16.png",
+    "32": "addon/icons/Passo-32.png",
+    "48": "addon/icons/Passo-48.png",
+    "64": "addon/icons/Passo-64.png",
+    "128": "addon/icons/Passo-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["browser-polyfill.js", "content_script.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "64": "addon/icons/Passo-64.png"
+    },
+    "default_popup": "addon/browserAction.html",
+    "default_title": "Passo"
+  },
+  "options_ui": {
+    "page": "/addon/options.html"
+  },
+  "permissions": ["storage"],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "passo@sanguineti.gr"
+    }
+  }
+}
