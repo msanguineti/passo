@@ -1,0 +1,25 @@
+{
+  "name": "passo",
+  "version": "0.0.1",
+  "description": "Password Regenerator",
+  "main": "content_script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mirco Sanguineti",
+  "license": "EUPL-1.2",
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "eslint-plugin-no-unsanitized": "^3.1.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.7",
+    "prettier": "^2.0.5",
+    "web-ext": "^4.2.0",
+    "webextension-polyfill": "^0.6.0"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "standard-version": "^8.0.0"
+  }
+}
