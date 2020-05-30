@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form class="w3-container w3-stretch w3-margin-top" id="form">
+      <div class="w3-row">
+        <div class="w3-col w3-margin-right" style="width: 100px;">
+          <label for="length">Length</label>
+          <input
+            class="w3-input w3-border w3-round"
+            type="number"
+            name="length"
+            id="length"
+            value="15"
+            min="0"
+          />
+        </div>
+        <div class="w3-rest">
+          <label>Letters</label>
+          <select
+            class="w3-select w3-border w3-round"
+            style="background-color: white;"
+            name="case"
+            id="case"
+          >
+            <option value="1" selected>Uppercase &amp; lowercase</option>
+            <option value="2">Only uppercase</option>
+            <option value="3">Only lowercase</option>
+            <option value="4">No letters</option>
+          </select>
+        </div>
+      </div>
+      <p>
+        <input
+          class="w3-check"
+          type="checkbox"
+          checked="checked"
+          id="numbers"
+        />
+        <label>Numbers</label>
+      </p>
+      <p style="margin-bottom: 0;">
+        <input
+          class="w3-check"
+          type="checkbox"
+          checked="checked"
+          id="symbols"
+        />
+        <label>Symbols</label>
+      </p>
+      <div style="display: flex; justify-content: end;">
+        <div class="tooltip">
+          <span class="w3-button w3-border w3-round w3-ripple" id="defaults"
+            >Defaults</span
+          >
+          <span class="tooltiptext tooltip-top">Restore defaults</span>
+        </div>
+        <button
+          class="w3-button w3-border w3-round w3-teal w3-ripple"
+          style="margin-left: 8px;"
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+    <script src="js/storage.js"></script>
+    <script src="js/options.js"></script>
+  </body>
+</html>
