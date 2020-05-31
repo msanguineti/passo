@@ -4,6 +4,7 @@
   "description": "Password Regenerator",
   "main": "content_script.js",
   "scripts": {
+    "start": "web-ext run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mirco Sanguineti",
