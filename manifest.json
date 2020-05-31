@@ -13,18 +13,18 @@
   "content_scripts": [
     {
       "matches": ["*://*.mozilla.org/*"],
-      "js": ["browser-polyfill.js", "content_script.js"]
+      "js": ["addon/js/browser-polyfill.js", "addon/js/content_script.js"]
     }
   ],
   "browser_action": {
     "default_icon": {
       "64": "addon/icons/Passo-64.png"
     },
-    "default_popup": "addon/browserAction.html",
+    "default_popup": "addon/views/browserAction.html",
     "default_title": "Passo"
   },
   "options_ui": {
-    "page": "/addon/options.html"
+    "page": "addon/views/options.html"
   },
   "permissions": ["storage"],
 
