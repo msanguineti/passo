@@ -12,8 +12,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["addon/js/browser-polyfill.js", "addon/js/content_script.js"]
+      "matches": ["*://*.mozilla.org/*", "<all_urls>"],
+      "js": [
+        "addon/js/vendor/browser-polyfill.js",
+        "addon/js/content_script.js"
+      ]
     }
   ],
   "browser_action": {
@@ -26,7 +29,7 @@
   "options_ui": {
     "page": "addon/views/options.html"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "activeTab"],
 
   "browser_specific_settings": {
     "gecko": {
