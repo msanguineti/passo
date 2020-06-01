@@ -2,10 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/flaticon.css" />
     <link href="../css/style.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="w3-margin-bottom">
     <form class="w3-container w3-stretch w3-margin-top" id="form">
+      <h3>Password generation settings</h3>
       <div class="w3-row">
         <div class="w3-col w3-margin-right" style="width: 100px;">
           <label for="length">Length</label>
@@ -67,7 +69,67 @@
         </button>
       </div>
     </form>
-    <script src="../js/storage.js"></script>
+
+    <div class="w3-container w3-stretch">
+      <h3>Check your master password</h3>
+      <p>
+        Lookup in leaked/breached passwords databases (provided by
+        <a href="https://haveibeenpwned.com/">Have I Been Pwned</a>) for the
+        presence of your master password. This service is also used by Mozilla's
+        <a href="https://monitor.firefox.com">Firefox Monitor</a>.
+      </p>
+      <p>
+        Do not worry, your password is NOT transmitted, only the first 5
+        characters of the hashed version are used to perform this check. This
+        follows the implementation of the
+        <a href="https://en.wikipedia.org/wiki/K-anonymity">k-Anonimity</a>
+        model.
+      </p>
+
+      <div class="w3-margin-top" style="display: flex;">
+        <input
+          class="w3-input"
+          style="
+            flex: 1 1 auto;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+          "
+          type="password"
+          name="master"
+          id="master"
+          placeholder="Enter your master password here"
+          required
+        />
+
+        <div class="tooltip">
+          <span
+            class="w3-button w3-ripple w3-border flaticon-eye flaticon-hide"
+            style="border-radius: 0 4px 4px 0;"
+            id="visibility"
+          ></span>
+          <span class="tooltiptext tooltip-top"
+            >Toggle password visibility</span
+          >
+        </div>
+        <div>
+          <input
+            style="margin-left: 8px;"
+            class="w3-button w3-ripple w3-round w3-border w3-teal"
+            type="button"
+            value="Check Now"
+            id="check"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div id="breachedPanel" class="w3-margin-top w3-container w3-hide">
+      <h4 class="w3-center" id="breached"></h4>
+    </div>
+
+    <script src="../js/common.js"></script>
     <script src="../js/options.js"></script>
   </body>
 </html>
