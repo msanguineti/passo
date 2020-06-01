@@ -2,34 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/flaticon.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <!-- <link rel="stylesheet" href="normalize.css"> -->
+    <link rel="stylesheet" href="/css/flaticon.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <div class="w3-container" style="color: white; background-color: #96000e;">
-      <h2><img src="img/Passo-white-64.png" alt="Passo" /> Passo</h2>
+      <h2><img src="/icons/Passo-white-64.png" alt="Passo" /> Passo</h2>
       <div class="w3-margin-bottom">Regenerate your passwords!</div>
     </div>
     <form class="w3-container w3-margin-bottom" id="form">
       <div class="w3-margin-top" style="display: flex;">
         <input
-          class="w3-input w3-border w3-round"
+          class="w3-input"
+          style="
+            flex: 1 1 auto;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+          "
           type="password"
           name="master"
           id="master"
           placeholder="Enter your master password here"
           required
         />
+
         <div class="tooltip">
-          <!-- <div
-          class="w3-button w3-ripple w3-border w3-round flaticon-eye"
-          id="copy"
-        ></div> -->
           <span
+            class="w3-button w3-ripple w3-border flaticon-eye flaticon-hide"
+            style="border-radius: 0 4px 4px 0;"
             id="visibility"
-            class="w3-button w3-ripple w3-border w3-round flaticon-hide flaticon-eye"
-            style="margin-left: 8px;"
           ></span>
           <span class="tooltiptext tooltip-left"
             >Toggle password visibility</span
@@ -75,32 +78,35 @@
         <div style="display: flex; margin-left: 8px;">
           <div class="tooltip">
             <span
-              class="w3-button w3-ripple w3-round flaticon-copy"
+              class="w3-button w3-ripple w3-round flaticon-use w3-disabled"
               style="color: white; background-color: #005996;"
-              id="copy"
+              id="use"
             ></span>
-            <span class="tooltiptext tooltip-top">Copy to clipboard</span>
+            <span class="tooltiptext tooltip-top">Use in page</span>
           </div>
           <div class="tooltip">
             <span
-              class="w3-button w3-ripple w3-round flaticon-use"
+              class="w3-button w3-ripple w3-round flaticon-copy w3-disabled"
               style="color: white; background-color: #005996; margin-left: 8px;"
-              id="use"
+              id="copy"
             ></span>
-            <span class="tooltiptext tooltip-left">Use in page</span>
+            <span class="tooltiptext tooltip-left">Copy to clipboard</span>
           </div>
         </div>
       </div>
 
-      <div class="w3-bar">
-        <div
-          class="w3-margin-top w3-button w3-ripple w3-round w3-border w3-bar-item w3-left"
-          id="settingsToggle"
-        >
-          Settings<span class="flaticon-sliders w3-margin-left"></span>
+      <div class="w3-margin-top">
+        <div class="tooltip">
+          <span
+            class="w3-button w3-ripple w3-round w3-border w3-left flaticon-sliders"
+            id="settingsToggle"
+          >
+            <!-- Settings<span class="flaticon-sliders w3-margin-left"></span> -->
+          </span>
+          <span class="tooltiptext tooltip-right">Quick settings</span>
         </div>
         <div
-          class="w3-margin-top w3-button w3-ripple w3-round w3-border w3-bar-item w3-right"
+          class="w3-button w3-ripple w3-round w3-border w3-right"
           id="options"
         >
           Options<span class="flaticon-wrench w3-margin-left"></span>
@@ -117,7 +123,7 @@
               name="length"
               id="length"
               value="15"
-              min="0"
+              min="1"
             />
           </div>
           <div class="w3-rest">
@@ -167,8 +173,8 @@
       <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
     </div> -->
 
-    <script src="../js/vendor/browser-polyfill.js"></script>
-    <script src="../js/storage.js"></script>
-    <script src="../js/browserAction.js"></script>
+    <script src="/js/vendor/browser-polyfill.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/browserAction.js"></script>
   </body>
 </html>
