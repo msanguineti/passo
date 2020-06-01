@@ -4,23 +4,28 @@
   "description": "Password Regenerator",
   "main": "content_script.js",
   "scripts": {
-    "start": "web-ext run",
+    "lint": "eslint --fix \"addon/**/*.js\" && web-ext -s addon/ lint",
+    "format": "prettier --write .",
+    "start": "web-ext -s addon/ run",
+    "prerelease": "npm run lint && npm run format",
+    "release": "standard-version",
+    "prebuild": "npm run lint && npm run format",
+    "build": "web-ext -s addon/ build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mirco Sanguineti",
   "license": "EUPL-1.2",
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "eslint": "^7.1.0",
     "eslint-plugin-no-unsanitized": "^3.1.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
+    "standard-version": "^8.0.0",
     "web-ext": "^4.2.0",
     "webextension-polyfill": "^0.6.0"
   },
-  "dependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "standard-version": "^8.0.0"
-  }
+  "dependencies": {}
 }
