@@ -23,7 +23,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "prettier": "^2.0.5",
-    "standard-version": "^8.0.0",
+    "standard-version": "^8.0.1",
     "web-ext": "^4.2.0",
     "webextension-polyfill": "^0.6.0"
   },
