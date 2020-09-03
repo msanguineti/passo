@@ -21,7 +21,7 @@
     "eslint": "^7.1.0",
     "eslint-plugin-no-unsanitized": "^3.1.1",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.7",
+    "lint-staged": "^10.3.0",
     "prettier": "^2.0.5",
     "standard-version": "^8.0.1",
     "web-ext": "^4.2.0",
