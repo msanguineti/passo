@@ -1,8 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
     commonjs: true,
+    es2021: true,
   },
   extends: ['eslint:recommended', 'plugin:no-unsanitized/DOM'],
   globals: {
@@ -10,9 +10,7 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    ecmaVersion: 11,
-    sourceType: 'module',
+    ecmaVersion: 12,
   },
   rules: {},
-  ignorePatterns: ['**/vendor/*.js'],
 }
