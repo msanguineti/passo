@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 browser.runtime.onMessage.addListener((request) => {
   console.log('request', request)
 

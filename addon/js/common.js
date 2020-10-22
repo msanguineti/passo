@@ -32,7 +32,6 @@ toggleVisibility.addEventListener('click', () => {
 function saveOptions(e) {
   e.preventDefault()
 
-  // eslint-disable-next-line no-undef
   browser.storage.sync.set({
     prefs: {
       length: document.getElementById('length').value,
@@ -64,7 +63,6 @@ function loadOptions() {
     console.log(`Error: ${error}`)
   }
 
-  // eslint-disable-next-line no-undef
   let getting = browser.storage.sync.get('prefs')
   getting.then(setCurrentChoice, onError)
 }
