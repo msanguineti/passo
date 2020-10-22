@@ -25,15 +25,11 @@ async function checkPassword(e) {
   // eslint-disable-next-line no-undef
   const hash = await sha(password, 1, false)
 
-  function escapeHTML(str, times) {
-    times = encodeURI(times.trim())
-
-    return `${str[0]}${times}${str[1]}`
+  function escapeHTML(str) {
+    return new Option(str).innerHTML
   }
 
   function reqListener() {
-    console.log(hash)
-
     const suffixes = this.responseText.split('\n')
 
     const breached = suffixes.find((v) => {
@@ -47,16 +43,13 @@ async function checkPassword(e) {
 
     if (breached) {
       breachedPanel.classList += ' w3-red w3-show'
-      document.getElementById(
-        'breached'
-      ).innerHTML = escapeHTML`This password has been seen ${
-        breached.split(':')[1]
-      } times before!`
+      document.getElementById('breached').textContent = escapeHTML(
+        `This password has been seen ${breached.split(':')[1]} times before!`
+      )
     } else {
       breachedPanel.classList += ' w3-green w3-show'
-      document.getElementById(
-        'breached'
-      ).innerHTML = `Your master password is OK!`
+      document.getElementById('breached').textContent =
+        'Your master password is OK!'
     }
   }
 
