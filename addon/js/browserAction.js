@@ -13,7 +13,6 @@ function onError(error) {
 
 function sendMessageToTabs(tabs, cmd) {
   for (let tab of tabs) {
-    // eslint-disable-next-line no-undef
     browser.tabs
       .sendMessage(tab.id, { command: cmd.command, payload: cmd.payload })
       .then((response) => {
@@ -30,7 +29,6 @@ function sendMessageToTabs(tabs, cmd) {
 }
 
 function sendCommand(cmd) {
-  // eslint-disable-next-line no-undef
   browser.tabs
     .query({
       currentWindow: true,
@@ -43,7 +41,6 @@ function sendCommand(cmd) {
 }
 
 function notifyUser(title, message) {
-  // eslint-disable-next-line no-undef
   browser.notifications.create({
     type: 'basic',
     iconUrl: '/icons/Passo-bg-70.png',
@@ -141,7 +138,6 @@ document.getElementById('settingsToggle').addEventListener('click', () => {
 })
 
 document.querySelector('#options').addEventListener('click', () => {
-  // eslint-disable-next-line no-undef
   browser.runtime.openOptionsPage()
   window.close()
 })
