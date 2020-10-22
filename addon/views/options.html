@@ -21,28 +21,23 @@
           />
         </div>
         <div class="w3-rest">
-          <label>Letters</label>
+          <label>Letters (Aa Bb Cc &hellip;)</label>
           <select
             class="w3-select w3-border w3-round"
             style="background-color: white"
             name="case"
             id="case"
           >
-            <option value="1" selected>Uppercase &amp; lowercase</option>
-            <option value="2">Only uppercase</option>
-            <option value="3">Only lowercase</option>
+            <option value="1" selected>UPPERCASE &amp; lowercase</option>
+            <option value="2">UPPERCASE</option>
+            <option value="3">lowercase</option>
             <option value="4">No letters</option>
           </select>
         </div>
       </div>
       <p>
-        <input
-          class="w3-check"
-          type="checkbox"
-          checked="checked"
-          id="numbers"
-        />
-        <label>Numbers</label>
+        <input class="w3-check" type="checkbox" checked="checked" id="digits" />
+        <label>Digits (0-9)</label>
       </p>
       <p style="margin-bottom: 0">
         <input
@@ -51,7 +46,7 @@
           checked="checked"
           id="symbols"
         />
-        <label>Symbols</label>
+        <label>Symbols (&dollar; &commat; &num; &hellip;)</label>
       </p>
       <div style="display: flex; justify-content: end">
         <div class="tooltip">
@@ -73,17 +68,15 @@
     <div class="w3-container w3-stretch">
       <h3>Check your master password</h3>
       <p>
-        Lookup in leaked/breached passwords databases (provided by
-        <a href="https://haveibeenpwned.com/">Have I Been Pwned</a>) for the
-        presence of your master password. This service is also used by Mozilla's
-        <a href="https://monitor.firefox.com">Firefox Monitor</a>.
+        Courtesy of
+        <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> (HIBP), you
+        can make sure that your master password has not been previously exposed
+        in some data breach.
       </p>
       <p>
-        Do not worry, your password is NOT transmitted, only the first 5
-        characters of the hashed version are used to perform this check. This
-        follows the implementation of the
-        <a href="https://en.wikipedia.org/wiki/K-anonymity">k-Anonymity</a>
-        model.
+        Mozilla's own
+        <a href="https://monitor.firefox.com">Firefox Monitor</a> service is
+        also using HIBP for its purposes.
       </p>
 
       <div class="w3-margin-top" style="display: flex">
@@ -123,11 +116,32 @@
           />
         </div>
       </div>
+      <div
+        id="breachedPanel"
+        class="w3-margin-top w3-round w3-container w3-hide"
+      >
+        <h4 class="w3-center" id="breached"></h4>
+      </div>
     </div>
 
-    <div id="breachedPanel" class="w3-margin-top w3-container w3-hide">
-      <h4 class="w3-center" id="breached"></h4>
-    </div>
+    <p>
+      Your password is <strong>NOT</strong> transmitted! Only the first 5
+      characters of the hashed version are used to perform this check. If you
+      are interested in how this is done, have a look at
+      <a href="https://en.wikipedia.org/wiki/K-anonymity">k-anonymity</a> on
+      Wikipedia.
+    </p>
+
+    <!-- <div class="w3-container w3-small w3-margin-top">
+      Copyright &copy; 2020 Mirco Sanguineti - Icons made by
+      <a
+        href="https://www.flaticon.com/authors/pixel-perfect"
+        title="Pixel perfect"
+        >Pixel perfect</a
+      >
+      from
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div> -->
 
     <script src="../js/common.js"></script>
     <script src="../js/options.js"></script>

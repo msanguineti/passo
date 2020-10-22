@@ -1,6 +1,6 @@
 const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const NUMBERS = '0123456789'.split('')
+const DIGITS = '0123456789'.split('')
 const SYMBOLS = '!@#$%^&*()_+-={}[]:";\'<>,.?/|\\~`'.split('')
 
 const form = document.getElementById('form')
@@ -55,7 +55,7 @@ function generatePassword(e) {
   const len = document.getElementById('length').value
   const el = document.getElementById('case')
   const letterCase = el.options[el.selectedIndex].value
-  const hasNumbers = document.getElementById('numbers').checked
+  const hasDigits = document.getElementById('digits').checked
   const hasSymbols = document.getElementById('symbols').checked
 
   if (Number.parseInt(len) <= '0') {
@@ -67,11 +67,14 @@ function generatePassword(e) {
 
   if (letterCase === 'ul' || letterCase === 'u') bucket.push(UPPERCASE)
   if (letterCase === 'ul' || letterCase === 'l') bucket.push(LOWERCASE)
-  if (hasNumbers) bucket.push(NUMBERS)
+  if (hasDigits) bucket.push(DIGITS)
   if (hasSymbols) bucket.push(SYMBOLS)
 
   if (bucket.length <= 0) {
-    notifyUser('Oops', 'Your password needs letters, numbers and symbols')
+    notifyUser(
+      'Oops',
+      'Cannot generate a password without letters, digits or symbols!'
+    )
     return
   }
 
@@ -79,7 +82,7 @@ function generatePassword(e) {
   sha(
     `${master.value}${document.getElementById('primary').value}${
       document.getElementById('secondary').value
-    }${len}${letterCase}${hasNumbers}${hasSymbols}`
+    }${len}${letterCase}${hasDigits}${hasSymbols}`
   )
     .then((sha) => {
       // shuffle the bucket
