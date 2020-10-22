@@ -4,14 +4,17 @@
   "description": "Password Regenerator",
   "main": "content_script.js",
   "scripts": {
-    "lint": "eslint --fix \"addon/**/*.js\" && web-ext -s addon/ lint",
-    "format": "prettier --write .",
     "start": "web-ext -s addon/ run",
     "prerelease": "npm run lint && npm run format",
     "release": "standard-version",
     "prebuild": "npm run lint && npm run format",
     "build": "web-ext -s addon/ build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "posttest": "npm run format",
+    "lint": "eslint . --cache --fix && web-ext -s addon/ lint",
+    "format": "prettier --loglevel warn --write .",
+    "vendor": "mkdir -p addon/js/vendor && cp node_modules/webextension-polyfill/dist/browser-polyfill.js* addon/js/vendor/"
   },
   "author": "Mirco Sanguineti",
   "license": "EUPL-1.2",
