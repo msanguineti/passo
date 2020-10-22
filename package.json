@@ -14,7 +14,7 @@
     "posttest": "npm run format",
     "lint": "eslint . --cache --fix && web-ext -s addon/ lint",
     "format": "prettier --loglevel warn --write .",
-    "vendor": "mkdir -p addon/js/vendor && cp node_modules/webextension-polyfill/dist/browser-polyfill.js* addon/js/vendor/"
+    "vendor": "mkdir -p addon/js/vendor && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js addon/js/vendor/"
   },
   "author": "Mirco Sanguineti",
   "license": "EUPL-1.2",

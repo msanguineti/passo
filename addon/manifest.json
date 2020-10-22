@@ -34,7 +34,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["/js/vendor/browser-polyfill.js", "/js/content_script.js"]
+      "js": ["/js/vendor/browser-polyfill.min.js", "/js/content_script.js"]
     }
   ]
 }
