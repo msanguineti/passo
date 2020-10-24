@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/msanguineti/passo/compare/v0.0.1...v0.9.0) (2020-10-24)
+
+### Bug Fixes
+
+- better UI strings and elements ([5df771a](https://github.com/msanguineti/passo/commit/5df771ad4cc92fa0baebd3f43fe566bbde2db15c))
+- do not format vendor js ([a9661b8](https://github.com/msanguineti/passo/commit/a9661b8fbcbbf48aa89a6cc6899328910ac8c3f7))
+- modulo bias ([456e581](https://github.com/msanguineti/passo/commit/456e58137562b1a8d6a9c1508187fcc8686f49a4))
+- unsafe use of innerHTML and HTML sanitization ([82ba676](https://github.com/msanguineti/passo/commit/82ba676c7ec26d07a169e91a4ab140fb1a58c97a))
+
 ### 0.0.1 (2020-06-01)
 
 ### Features
