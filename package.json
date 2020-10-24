@@ -5,9 +5,9 @@
   "main": "content_script.js",
   "scripts": {
     "start": "web-ext -s addon/ run",
-    "prerelease": "npm run lint && npm run format",
+    "prerelease": "npm run build",
     "release": "standard-version",
-    "prebuild": "npm run lint && npm run format",
+    "prebuild": "npm run vendor && npm run lint && npm run format",
     "build": "web-ext -s addon/ build",
     "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,6 +1,4 @@
 browser.runtime.onMessage.addListener((request) => {
-  console.log('request', request)
-
   switch (request.command) {
     case 'url':
       return Promise.resolve({

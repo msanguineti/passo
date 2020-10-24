@@ -6,6 +6,7 @@ async function sha(message, length = 512, buffer = true) {
   const hashBuffer = await crypto.subtle.digest(`SHA-${length}`, msgBuffer)
   // convert ArrayBuffer to Array
   const hashArray = Array.from(new Uint8Array(hashBuffer))
+
   if (buffer) return hashArray
   // convert bytes to hex string
   const hashHex = hashArray
