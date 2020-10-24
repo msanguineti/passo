@@ -49,84 +49,135 @@ function notifyUser(title, message) {
   })
 }
 
-function generatePassword(e) {
-  e.preventDefault()
+function isUppercase(c) {
+  return /^[A-Z]$/.test(c)
+}
+function isLowercase(c) {
+  return /^[a-z]$/.test(c)
+}
+function isDigit(c) {
+  return /^[0-9]$/.test(c)
+}
+function isSymbol(c) {
+  return SYMBOLS.indexOf(c) >= 0
+}
 
-  const len = document.getElementById('length').value
-  const el = document.getElementById('case')
-  const letterCase = el.options[el.selectedIndex].value
-  const hasDigits = document.getElementById('digits').checked
-  const hasSymbols = document.getElementById('symbols').checked
-
-  if (Number.parseInt(len) <= '0') {
-    notifyUser('Mmmmmh', 'Cannot generate a password of length <= 0')
-    return
+function criteriaMet(p, checks) {
+  for (let i = 0; i < checks.length; i++) {
+    if (!p.some((v) => checks[i](v))) {
+      return false
+    }
   }
 
-  const bucket = []
+  return true
+}
 
-  if (letterCase === 'ul' || letterCase === 'u') bucket.push(UPPERCASE)
-  if (letterCase === 'ul' || letterCase === 'l') bucket.push(LOWERCASE)
-  if (hasDigits) bucket.push(DIGITS)
-  if (hasSymbols) bucket.push(SYMBOLS)
+async function generatePassword(e) {
+  try {
+    e.preventDefault()
 
-  if (bucket.length <= 0) {
-    notifyUser(
-      'Oops',
-      'Cannot generate a password without letters, digits or symbols!'
+    const password_length = document.getElementById('length').value
+
+    if (Number.parseInt(password_length) <= 0) {
+      notifyUser('Mmmmmh', 'Cannot generate a password of length <= 0')
+      return
+    }
+
+    const el = document.getElementById('case')
+    const letterCase = el.options[el.selectedIndex].value
+    const hasDigits = document.getElementById('digits').checked
+    const hasSymbols = document.getElementById('symbols').checked
+
+    const checks = []
+    const bucket = []
+    if (letterCase === 'ul' || letterCase === 'u') {
+      bucket.push(...UPPERCASE)
+      checks.push(isUppercase)
+    }
+    if (letterCase === 'ul' || letterCase === 'l') {
+      bucket.push(...LOWERCASE)
+      checks.push(isLowercase)
+    }
+    if (hasDigits) {
+      bucket.push(...DIGITS)
+      checks.push(isDigit)
+    }
+    if (hasSymbols) {
+      bucket.push(...SYMBOLS)
+      checks.push(isSymbol)
+    }
+
+    if (bucket.length <= 0) {
+      notifyUser(
+        'Oops',
+        'Cannot generate a password without letters, digits or symbols!'
+      )
+      return
+    }
+
+    if (checks.length > password_length) {
+      notifyUser(
+        'Error',
+        `Minimum length to meet your password's criteria is: ${checks.length}`
+      )
+      return
+    }
+
+    const limit = 256 - (256 % bucket.length)
+
+    // eslint-disable-next-line no-undef
+    let sharray = await sha(
+      `${master.value}${document.getElementById('primary').value}${
+        document.getElementById('secondary').value
+      }${password_length}${letterCase}${hasDigits}${hasSymbols}`
     )
-    return
-  }
 
-  // eslint-disable-next-line no-undef
-  sha(
-    `${master.value}${document.getElementById('primary').value}${
-      document.getElementById('secondary').value
-    }${len}${letterCase}${hasDigits}${hasSymbols}`
-  )
-    .then((sha) => {
-      // shuffle the bucket
-      for (let i = bucket.length - 1; i > 0; i--) {
-        const j = sha[i] % bucket.length
-        const x = bucket[i]
-        bucket[i] = bucket[j]
-        bucket[j] = x
+    let password = []
+
+    do {
+      // adjust for password length
+      while (sharray.length < password_length) {
+        // eslint-disable-next-line no-undef
+        const new_sharray = await sha(sharray.join(''))
+        sharray = [...sharray, ...new_sharray].filter((v) => v < limit)
       }
 
-      const password = []
-      for (let i = 0; i < len; i++) {
-        // add 1 every time we reach sha_length to avoid repetitions
-        // (at least until password_length = sha_length^2 )
-        const picker = Math.floor(sha[i % sha.length] + i / sha.length)
-        const picked = bucket[picker % bucket.length]
-        password.push(picked[sha[picker % sha.length] % picked.length])
-      }
-      generated.value = password.join('')
+      password = sharray
+        .slice(0, password_length)
+        .map((n) => bucket[n % bucket.length])
 
-      const use = document.querySelector('#use')
-      use.addEventListener('click', () => {
-        sendCommand({ command: 'use', payload: generated.value })
-        notifyUser(
-          'Password ready',
-          'Your password has been pasted into password fields'
-        )
-        window.close()
-      })
-      use.className = use.className.replace(' w3-disabled', '')
+      // start anew if criteria are not met
+      // eslint-disable-next-line no-undef
+      sharray = await sha(sharray.join(''))
+    } while (!criteriaMet(password, checks))
 
-      const copy = document.querySelector('#copy')
-      copy.addEventListener('click', () => {
-        generated.select()
-        document.execCommand('copy')
-        notifyUser(
-          'Password copied',
-          'Your password has been copied to the clipboard'
-        )
-        window.close()
-      })
-      copy.className = copy.className.replace(' w3-disabled', '')
+    generated.value = password.join('')
+
+    const use = document.querySelector('#use')
+    use.addEventListener('click', () => {
+      sendCommand({ command: 'use', payload: generated.value })
+      notifyUser(
+        'Password ready',
+        'Your password has been pasted into password fields'
+      )
+      window.close()
     })
-    .catch(onError)
+    use.className = use.className.replace(' w3-disabled', '')
+
+    const copy = document.querySelector('#copy')
+    copy.addEventListener('click', () => {
+      generated.select()
+      document.execCommand('copy')
+      notifyUser(
+        'Password copied',
+        'Your password has been copied to the clipboard'
+      )
+      window.close()
+    })
+    copy.className = copy.className.replace(' w3-disabled', '')
+  } catch (e) {
+    onError(e)
+  }
 }
 
 form.addEventListener('submit', generatePassword)
