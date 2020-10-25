@@ -125,12 +125,15 @@ async function generatePassword(e) {
 
     const limit = 256 - (256 % bucket.length)
 
-    // eslint-disable-next-line no-undef
-    let sharray = await sha(
-      `${master.value}${document.getElementById('primary').value}${
-        document.getElementById('secondary').value
-      }${password_length}${letterCase}${hasDigits}${hasSymbols}`
-    )
+    /* eslint-disable no-undef */
+    let sharray = (
+      await sha(
+        `${master.value}${document.getElementById('primary').value}${
+          document.getElementById('secondary').value
+        }${password_length}${letterCase}${hasDigits}${hasSymbols}`
+      )
+    ).filter((v) => v < limit)
+    /* eslint-enable */
 
     let password = []
 
@@ -152,6 +155,9 @@ async function generatePassword(e) {
     } while (!criteriaMet(password, checks))
 
     generated.value = password.join('')
+
+    // const entropy = Math.log2(Math.pow(bucket.length,password_length))
+    // console.log("generatePassword -> entropy", entropy)
 
     const use = document.querySelector('#use')
     use.addEventListener('click', () => {
