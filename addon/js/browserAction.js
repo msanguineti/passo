@@ -88,23 +88,25 @@ async function generatePassword(e) {
     const hasDigits = document.getElementById('digits').checked
     const hasSymbols = document.getElementById('symbols').checked
 
+    const meetCriteria = document.getElementById('criteria').checked
+
     const checks = []
     const bucket = []
     if (letterCase === 'ul' || letterCase === 'u') {
       bucket.push(...UPPERCASE)
-      checks.push(isUppercase)
+      if (meetCriteria) checks.push(isUppercase)
     }
     if (letterCase === 'ul' || letterCase === 'l') {
       bucket.push(...LOWERCASE)
-      checks.push(isLowercase)
+      if (meetCriteria) checks.push(isLowercase)
     }
     if (hasDigits) {
       bucket.push(...DIGITS)
-      checks.push(isDigit)
+      if (meetCriteria) checks.push(isDigit)
     }
     if (hasSymbols) {
       bucket.push(...SYMBOLS)
-      checks.push(isSymbol)
+      if (meetCriteria) checks.push(isSymbol)
     }
 
     if (bucket.length <= 0) {
@@ -126,7 +128,7 @@ async function generatePassword(e) {
     const limit = 256 - (256 % bucket.length)
 
     /* eslint-disable no-undef */
-    let sharray = (
+    let hash_array = (
       await sha(
         `${master.value}${document.getElementById('primary').value}${
           document.getElementById('secondary').value
@@ -139,19 +141,21 @@ async function generatePassword(e) {
 
     do {
       // adjust for password length
-      while (sharray.length < password_length) {
-        // eslint-disable-next-line no-undef
-        const new_sharray = await sha(sharray.join(''))
-        sharray = [...sharray, ...new_sharray].filter((v) => v < limit)
+      while (hash_array.length < password_length) {
+        hash_array = [
+          ...hash_array,
+          // eslint-disable-next-line no-undef
+          ...(await sha(hash_array.join(''))),
+        ].filter((v) => v < limit)
       }
 
-      password = sharray
+      password = hash_array
         .slice(0, password_length)
         .map((n) => bucket[n % bucket.length])
 
       // start anew if criteria are not met
       // eslint-disable-next-line no-undef
-      sharray = await sha(sharray.join(''))
+      hash_array = await sha(hash_array.join(''))
     } while (!criteriaMet(password, checks))
 
     generated.value = password.join('')

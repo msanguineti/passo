@@ -37,8 +37,9 @@ function saveOptions(e) {
     prefs: {
       length: document.getElementById('length').value,
       case: document.getElementById('case').selectedIndex,
-      numbers: document.getElementById('numbers').checked,
+      numbers: document.getElementById('digits').checked,
       symbols: document.getElementById('symbols').checked,
+      criteria: document.getElementById('criteria').checked,
     },
   })
 }
@@ -53,10 +54,12 @@ function loadOptions() {
       document.getElementById('case').selectedIndex = result.prefs.case
         ? result.prefs.case
         : 0
-      document.getElementById('numbers').checked =
-        result.prefs.numbers !== void 0 ? result.prefs.numbers : true
+      document.getElementById('digits').checked =
+        result.prefs.numbers !== void 0 ? result.prefs.numbers : 'checked'
       document.getElementById('symbols').checked =
-        result.prefs.symbols !== void 0 ? result.prefs.symbols : true
+        result.prefs.symbols !== void 0 ? result.prefs.symbols : 'checked'
+      document.getElementById('criteria').checked =
+        result.prefs.criteria !== void 0 ? result.prefs.criteria : 'checked'
     }
   }
 

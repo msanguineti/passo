@@ -3,8 +3,9 @@ function restoreOptions(e) {
 
   document.getElementById('length').value = '15'
   document.getElementById('case').selectedIndex = 0
-  document.getElementById('numbers').checked = true
-  document.getElementById('symbols').checked = true
+  document.getElementById('digits').checked = 'checked'
+  document.getElementById('symbols').checked = 'checked'
+  document.getElementById('criteria').checked = 'checked'
 }
 
 document.getElementById('defaults').addEventListener('click', restoreOptions)

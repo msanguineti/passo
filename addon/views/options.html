@@ -9,7 +9,7 @@
     <form class="w3-container w3-stretch w3-margin-top" id="form">
       <h3>Password generation settings</h3>
       <div class="w3-row">
-        <div class="w3-col w3-margin-right" style="width: 100px">
+        <div class="w3-col s2 w3-margin-right">
           <label for="length">Length</label>
           <input
             class="w3-input w3-border w3-round"
@@ -17,37 +17,72 @@
             name="length"
             id="length"
             value="15"
-            min="0"
+            min="1"
           />
         </div>
-        <div class="w3-rest">
-          <label>Letters (Aa Bb Cc &hellip;)</label>
+        <div class="w3-col s9">
+          <label>Letters</label>
           <select
             class="w3-select w3-border w3-round"
             style="background-color: white"
             name="case"
             id="case"
           >
-            <option value="1" selected>UPPERCASE &amp; lowercase</option>
-            <option value="2">UPPERCASE</option>
-            <option value="3">lowercase</option>
-            <option value="4">No letters</option>
+            <option value="ul" selected>UPPERCASE &amp; lowercase</option>
+            <option value="u">UPPERCASE</option>
+            <option value="l">lowercase</option>
+            <option value="nl">No letters</option>
           </select>
         </div>
       </div>
-      <p>
-        <input class="w3-check" type="checkbox" checked="checked" id="digits" />
-        <label>Digits (0-9)</label>
-      </p>
-      <p style="margin-bottom: 0">
-        <input
-          class="w3-check"
-          type="checkbox"
-          checked="checked"
-          id="symbols"
-        />
-        <label>Symbols (&dollar; &commat; &num; &hellip;)</label>
-      </p>
+      <div class="w3-row">
+        <div class="w3-col s6">
+          <div class="w3-row">
+            <div class="tooltip w3-margin-top">
+              <span>
+                <input
+                  class="w3-check"
+                  type="checkbox"
+                  checked="checked"
+                  id="digits"
+                />
+                <label>Digits</label>
+              </span>
+              <span class="tooltiptext tooltip-right">0 1 2 &hellip; 9</span>
+            </div>
+          </div>
+          <div class="w3-row">
+            <div class="tooltip w3-margin-top">
+              <span
+                ><input
+                  class="w3-check"
+                  type="checkbox"
+                  checked="checked"
+                  id="symbols"
+                />
+                <label>Symbols</label>
+              </span>
+              <span class="tooltiptext tooltip-right">$ @ # &hellip;</span>
+            </div>
+          </div>
+        </div>
+        <div class="w3-col s6">
+          <div class="tooltip w3-margin-top">
+            <span>
+              <input
+                class="w3-check"
+                type="checkbox"
+                checked="checked"
+                id="criteria"
+              />
+              <label>Enforce criteria</label>
+            </span>
+            <span class="tooltiptext tooltip-top"
+              >At least 1 character from each selected class</span
+            >
+          </div>
+        </div>
+      </div>
       <div style="display: flex; justify-content: end">
         <div class="tooltip">
           <span class="w3-button w3-border w3-round w3-ripple" id="defaults"
