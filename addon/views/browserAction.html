@@ -1,13 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/css/flaticon.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="../css/flaticon.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <div class="w3-container" style="color: white; background-color: #96000e">
-      <h2><img src="/icons/Passo-white-64.png" alt="Passo" /> Passo</h2>
+      <h2><img src="../icons/Passo-white-64.png" alt="Passo" /> Passo</h2>
       <div class="w3-margin-bottom">Regenerate your passwords!</div>
     </div>
     <form class="w3-container w3-margin-bottom" id="form">
@@ -115,7 +114,7 @@
 
       <div class="w3-margin-top w3-hide" id="settingsPanel">
         <div class="w3-row">
-          <div class="w3-col w3-margin-right" style="width: 100px">
+          <div class="w3-col s2 w3-margin-right">
             <label for="length">Length</label>
             <input
               class="w3-input w3-border w3-round"
@@ -126,8 +125,8 @@
               min="1"
             />
           </div>
-          <div class="w3-rest">
-            <label>Letters (Aa Bb Cc &hellip;)</label>
+          <div class="w3-col s9">
+            <label>Letters</label>
             <select
               class="w3-select w3-border w3-round"
               style="background-color: white"
@@ -141,40 +140,70 @@
             </select>
           </div>
         </div>
-        <p>
-          <input
-            class="w3-check"
-            type="checkbox"
-            checked="checked"
-            id="digits"
-          />
-          <label>Digits (0-9)</label>
-        </p>
-        <p style="margin-bottom: 0">
-          <input
-            class="w3-check"
-            type="checkbox"
-            checked="checked"
-            id="symbols"
-          />
-          <label>Symbols (&dollar; &commat; &num; &hellip;)</label>
-        </p>
+        <div class="w3-row">
+          <div class="w3-col s6">
+            <div class="w3-row">
+              <div class="tooltip w3-margin-top">
+                <span>
+                  <input
+                    class="w3-check"
+                    type="checkbox"
+                    checked="checked"
+                    id="digits"
+                  />
+                  <label>Digits</label>
+                </span>
+                <span class="tooltiptext tooltip-right">0 1 2 &hellip; 9</span>
+              </div>
+            </div>
+            <div class="w3-row">
+              <div class="tooltip w3-margin-top">
+                <span
+                  ><input
+                    class="w3-check"
+                    type="checkbox"
+                    checked="checked"
+                    id="symbols"
+                  />
+                  <label>Symbols</label>
+                </span>
+                <span class="tooltiptext tooltip-right">$ @ # &hellip;</span>
+              </div>
+            </div>
+          </div>
+          <div class="w3-col s6">
+            <div class="tooltip w3-margin-top">
+              <span>
+                <input
+                  class="w3-check"
+                  type="checkbox"
+                  checked="checked"
+                  id="criteria"
+                />
+                <label>Enforce criteria</label>
+              </span>
+              <span class="tooltiptext tooltip-top"
+                >At least 1 character from each selected class</span
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </form>
 
     <!-- <div class="w3-container w3-small w3-margin-top">
-      Copyright &copy; 2020 Mirco Sanguineti - Icons made by
-      <a
-        href="https://www.flaticon.com/authors/pixel-perfect"
-        title="Pixel perfect"
-        >Pixel perfect</a
-      >
-      from
-      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-    </div> -->
+    Copyright &copy; 2020 Mirco Sanguineti - Icons made by
+    <a
+      href="https://www.flaticon.com/authors/pixel-perfect"
+      title="Pixel perfect"
+      >Pixel perfect</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+  </div> -->
 
-    <script src="/js/vendor/browser-polyfill.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="/js/browserAction.js"></script>
+    <script src="../js/vendor/browser-polyfill.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/browserAction.js"></script>
   </body>
 </html>
