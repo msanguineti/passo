@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/msanguineti/passo/compare/v0.9.1...v0.9.2) (2020-10-25)
+
+### Bug Fixes
+
+- do not enforce password complexity criteria ([b193ea0](https://github.com/msanguineti/passo/commit/b193ea09df5e434d67532e11375a669d98b64fef))
+- increase default password length to 19 chars ([dcb2c8f](https://github.com/msanguineti/passo/commit/dcb2c8f19b6a6a10f6f4e13796239590eb9d570c))
+
 ### [0.9.1](https://github.com/msanguineti/passo/compare/v0.9.0...v0.9.1) (2020-10-25)
 
 ### Features
