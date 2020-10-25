@@ -62,7 +62,7 @@ function isSymbol(c) {
   return SYMBOLS.indexOf(c) >= 0
 }
 
-function criteriaMet(p, checks) {
+function complexityMet(p, checks) {
   for (let i = 0; i < checks.length; i++) {
     if (!p.some((v) => checks[i](v))) {
       return false
@@ -88,25 +88,25 @@ async function generatePassword(e) {
     const hasDigits = document.getElementById('digits').checked
     const hasSymbols = document.getElementById('symbols').checked
 
-    const meetCriteria = document.getElementById('criteria').checked
+    const meetComplexity = document.getElementById('complexity').checked
 
     const checks = []
     const bucket = []
     if (letterCase === 'ul' || letterCase === 'u') {
       bucket.push(...UPPERCASE)
-      if (meetCriteria) checks.push(isUppercase)
+      if (meetComplexity) checks.push(isUppercase)
     }
     if (letterCase === 'ul' || letterCase === 'l') {
       bucket.push(...LOWERCASE)
-      if (meetCriteria) checks.push(isLowercase)
+      if (meetComplexity) checks.push(isLowercase)
     }
     if (hasDigits) {
       bucket.push(...DIGITS)
-      if (meetCriteria) checks.push(isDigit)
+      if (meetComplexity) checks.push(isDigit)
     }
     if (hasSymbols) {
       bucket.push(...SYMBOLS)
-      if (meetCriteria) checks.push(isSymbol)
+      if (meetComplexity) checks.push(isSymbol)
     }
 
     if (bucket.length <= 0) {
@@ -120,7 +120,7 @@ async function generatePassword(e) {
     if (checks.length > password_length) {
       notifyUser(
         'Error',
-        `Minimum length to meet your password's criteria is: ${checks.length}`
+        `Minimum length to meet password's complexity criteria is: ${checks.length}`
       )
       return
     }
@@ -153,10 +153,10 @@ async function generatePassword(e) {
         .slice(0, password_length)
         .map((n) => bucket[n % bucket.length])
 
-      // start anew if criteria are not met
+      // start anew if complexity is not met
       // eslint-disable-next-line no-undef
       hash_array = await sha(hash_array.join(''))
-    } while (!criteriaMet(password, checks))
+    } while (!complexityMet(password, checks))
 
     generated.value = password.join('')
 
