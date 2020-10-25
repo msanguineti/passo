@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/msanguineti/passo/compare/v0.9.0...v0.9.1) (2020-10-25)
+
+### Features
+
+- password criteria ([2f17f19](https://github.com/msanguineti/passo/commit/2f17f1985dfe089b284a03beae12d6343679e503))
+
+### Bug Fixes
+
+- apply limit to hash array ([df519fa](https://github.com/msanguineti/passo/commit/df519fa555d6d94ae1305b106b36594eb371684e))
+
 ## [0.9.0](https://github.com/msanguineti/passo/compare/v0.0.1...v0.9.0) (2020-10-24)
 
 ### Bug Fixes

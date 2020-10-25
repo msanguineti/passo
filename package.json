@@ -1,6 +1,6 @@
 {
   "name": "passo",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Password Regenerator",
   "main": "content_script.js",
   "scripts": {
