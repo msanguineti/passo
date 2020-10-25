@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Passo",
   "description": "Password Regenerator",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "icons": {
     "16": "/icons/Passo-16.png",
     "32": "/icons/Passo-32.png",
