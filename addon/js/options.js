@@ -1,7 +1,7 @@
 function restoreOptions(e) {
   e.preventDefault()
 
-  document.getElementById('length').value = '15'
+  document.getElementById('length').value = '19'
   document.getElementById('case').selectedIndex = 0
   document.getElementById('digits').checked = 'checked'
   document.getElementById('symbols').checked = 'checked'
