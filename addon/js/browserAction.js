@@ -1,7 +1,7 @@
 const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 const DIGITS = '0123456789'.split('')
-const SYMBOLS = '!@#$%^&*()_+-={}[]:";\'<>,.?/|\\~`'.split('')
+const SYMBOLS = '!@#$%^&*()_ +-={}[]:";\'<>,.?/|\\~`'.split('')
 
 const form = document.getElementById('form')
 const generated = document.getElementById('generated')
