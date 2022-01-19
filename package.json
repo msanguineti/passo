@@ -19,7 +19,7 @@
   "author": "Mirco Sanguineti",
   "license": "EUPL-1.2",
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
+    "@commitlint/cli": "^16.0.3",
     "@commitlint/config-conventional": "^11.0.0",
     "eslint": "^7.21.0",
     "eslint-plugin-no-unsanitized": "^3.1.4",
