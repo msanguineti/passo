@@ -27,7 +27,7 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "standard-version": "^9.1.1",
-    "web-ext": "^5.5.0",
+    "web-ext": "^6.7.0",
     "webextension-polyfill": "^0.7.0"
   },
   "dependencies": {}
